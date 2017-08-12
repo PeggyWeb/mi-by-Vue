@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <top-bar></top-bar>
+    <div class="container">
+      <top-header></top-header>
+    </div>
     <img src="./assets/img/logo.png">
     <router-view></router-view>
   </div>
@@ -8,9 +11,11 @@
 
 <script>
   import Bar from './components/TopBar.vue'
+  import TopHeader from './components/TopHeader.vue'
 export default {
     components:{
-        'top-bar':Bar
+        'top-bar':Bar,
+        'top-header':TopHeader
       }
 
 }
@@ -21,7 +26,5 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 </style>
