@@ -1,30 +1,25 @@
 <template>
   <div id="app">
     <top-bar></top-bar>
-    <div class="container">
-      <top-header></top-header>
-    </div>
-    <img src="./assets/img/logo.png">
     <router-view></router-view>
+    <footer_view></footer_view>
   </div>
 </template>
 
 <script>
-  import Bar from './components/TopBar.vue'
-  import TopHeader from './components/TopHeader.vue'
+  import Top_view from './components/TopBar.vue'
+  import Home from './components/Home.vue'
+  import footer_view from './components/Footer.vue'
 export default {
     components:{
-        'top-bar':Bar,
-        'top-header':TopHeader
+        'top-bar':Top_view,
+        'home-index':Home,
+        'footer_view':footer_view
       }
 
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+
 </style>
