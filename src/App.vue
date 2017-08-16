@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <top-bar></top-bar>
+    <top-bar v-show="headerShow"></top-bar>
     <router-view></router-view>
     <footer_view></footer_view>
   </div>
@@ -10,7 +10,20 @@
   import Top_view from './components/TopBar.vue'
   import Home from './components/Home.vue'
   import footer_view from './components/Footer.vue'
+  import {mapGetters,matpActions} from 'vuex'
 export default {
+    computed:mapGetters([
+      'headerShow'
+    ]),
+    watch:{
+        $route(to,from){
+            if(to.path=='/Login'){
+                this.$store.dispatch('hideHeader');
+            }else{
+                this.$store.dispatch('showHeader')
+            }
+        }
+    },
     components:{
         'top-bar':Top_view,
         'home-index':Home,

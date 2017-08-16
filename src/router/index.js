@@ -9,9 +9,9 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'Home',
-      component: Home
+      path:'/Home',
+      name:'Home',
+      component:Home
     },
     {
       path:'/Login',
@@ -22,6 +22,14 @@ export default new Router({
       path:'/Cart',
       name:'Cart',
       component:Cart
+    },
+    {
+      path: '/',
+      redirect: '/Home'
+    },
+    {
+      path:'*',
+      redirect:'/Home'
     }
   ]
 })
