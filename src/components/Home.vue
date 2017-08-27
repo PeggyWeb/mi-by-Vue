@@ -11,9 +11,11 @@
 </style>
 <script>
   import TopHeader from './TopHeader.vue'
+  import GoodSection from './GoodSection.vue'
   export default {
     components:{
-      'top-header':TopHeader
+      'top-header':TopHeader,
+      'goodSection':GoodSection
     }
 
   }

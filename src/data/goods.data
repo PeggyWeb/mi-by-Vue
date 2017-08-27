@@ -1,0 +1,22 @@
+[{
+  "gname":"小米MIX",
+  "price":"3499",
+  "img":"./assets/img/3C.png",
+  "goods_info":"6.4" 全面屏，全陶瓷机身"
+},{
+  "gname":"小米MIX2",
+    "price":"3499",
+    "img":"./assets/img/3C.png",
+    "goods_info":"6.4" 全面屏，全陶瓷机身"
+},{
+  "gname":"小米MIX3",
+  "price":"3499",
+  "img":"./assets/img/3C.png",
+  "goods_info":"6.4" 全面屏，全陶瓷机身"
+},{
+  "gname":"小米MIX4",
+  "price":"3499",
+  "img":"./assets/img/3C.png",
+  "goods_info":"6.4" 全面屏，全陶瓷机身"
+}
+]

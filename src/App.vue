@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <loading v-show="loading"></loading>
     <top-bar v-show="headerShow"></top-bar>
     <router-view></router-view>
     <footer_view></footer_view>
@@ -13,7 +14,8 @@
   import {mapGetters,matpActions} from 'vuex'
 export default {
     computed:mapGetters([
-      'headerShow'
+      'headerShow',
+      'loading'
     ]),
     watch:{
         $route(to,from){
@@ -27,7 +29,8 @@ export default {
     components:{
         'top-bar':Top_view,
         'home-index':Home,
-        'footer_view':footer_view
+        'footer_view':footer_view,
+
       }
 
 }
