@@ -2,7 +2,8 @@
   <div id="Home">
     <div class="container">
       <top-header></top-header>
-    </div>
+
+    </div><good-section></good-section>
     <img src="../assets/img/logo.png">
   </div>
 </template>
@@ -15,7 +16,7 @@
   export default {
     components:{
       'top-header':TopHeader,
-      'goodSection':GoodSection
+      'good-section':GoodSection
     }
 
   }

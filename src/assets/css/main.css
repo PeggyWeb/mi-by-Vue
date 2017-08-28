@@ -94,7 +94,7 @@ header {height:40px;line-height:40px;font-size:12px;background-color:#333;color:
 .good-title{margin:0;font-size:14px;font-weight: 400;}
 .good-desc{margin:5px 0 10px 0;font-size:12px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;color:#b0b0b0;}
 .good-price{color:#ff6709;}
-.home-main{margin-top:40px;padding-bottom:60px;padding-top:60px;background-color:#f5f5f5;}
+.home-main{margin-top:40px;padding-bottom:60px;padding-top:60px;background-color:#f5f5f5;overflow: hidden}
 .home-main .goods-list-item .img-wrap>img{width:150px;height:150px;}
 .home-ele,.home-smart{font-size:0;margin-bottom:8px;}
 .home-main .goods-list{display:inline-block;max-width:992px;vertical-align: top;}
@@ -150,7 +150,7 @@ header {height:40px;line-height:40px;font-size:12px;background-color:#333;color:
 .video-item .img-wrap:hover .btn-play{background-color:#ff6700;border-color:#ff6700;}
 .video-item .img-wrap>img{width:296px;ehgiht:180px;}
 .btn-play{position:absolute;left:20px;bottom:15px;padding:2px 9px;border:2px solid #fff;border-radius:15px;color:#fff;background-color:rgba(0,0,0,.3)}
-.footer{}
+.footer{clear:both}
 .server-list{font-size:0;padding:27px 0;border-bottom:1px solid #bbb;text-align:center;}
 .server-item{display: inline-block;width:19.8%;border-right:1px solid #bbb;font-size:16px;color:#333;}
 .server-item:last-child{border-right:0;}

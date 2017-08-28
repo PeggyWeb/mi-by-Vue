@@ -5,23 +5,23 @@ import App from './App'
 import axios from 'axios'
 import router from './router'
 import store from './store/'
-import Loading from './components/loading'
+import Loading from './components/Loading'
 
 Vue.use(Loading);
 axios.interceptors.request.use(function (config) {
-  stores.dispatch('showLoading')
+  store.dispatch('showLoading');
   return config;
 },function (error) {
   return Promise.reject(error);
 });
 axios.interceptors.response.use(function(response){
-  stores.dispatch('hideLoading')
+  store.dispatch('hideLoading');
   return response
 },function(error){
   return Promise.reject(error);
-})
+});
 
-
+Vue.prototype.$http = axios;
 
 require('./assets/css/main.css')
 Vue.config.productionTip = false

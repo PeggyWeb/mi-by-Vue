@@ -1,5 +1,7 @@
 <template>
-  <div class="home-smart">
+  <div class="home-main">
+    <div class="container">
+
     <div class="section-header">
       <h2 class="section-title">智能</h2>
       <ul class="section-nav">
@@ -9,7 +11,7 @@
         <li>家居</li>
       </ul>
     </div>
-    <a href="" class="img-wrap"><img src="../assets/img/cleanFloor.jpg" /></a>
+    <a href="" class="img-wrap fl"><img src="../assets/img/cleanFloor.jpg" /></a>
     <ul class="goods-list">
       <li class="goods-list-item">
         <span class="flag flag-new">新品</span>
@@ -25,74 +27,37 @@
             <span class="author">来自橙子的</span>
           </a>
         </p>
-      </li><li class="goods-list-item">
-      <a href="#" class="img-wrap">
-        <img src="../assets/img/xmad-gd-01.png" />
-      </a>
-      <h3 class="good-title"><a href="">小米手环</a></h3>
-      <p class="good-desc">OLED 显示屏幕，升级计步算法</p>
-      <p class="good-price">588</p>
-      <p class="review-wrap">
-        <a href="">
-          <span class="review">听说小米客服美眉很厉害送我一首藏头诗可好我爱钱天玉</span>
-          <span class="author">来自橙子的</span>
-        </a>
-      </p>
-    </li><li class="goods-list-item">
-      <a href="#" class="img-wrap">
-        <img src="../assets/img/xmad-gd-01.png" />
-      </a>
-      <h3 class="good-title"><a href="">小米手环</a></h3>
-      <p class="good-desc">OLED 显示屏幕，升级计步算法</p>
-      <p class="good-price">588</p>
-      <p class="review-wrap">
-        <a href="">
-          <span class="review">听说小米客服美眉很厉害送我一首藏头诗可好我爱钱天玉</span>
-          <span class="author">来自橙子的</span>
-        </a>
-      </p>
-    </li><li class="goods-list-item">
-      <span class="flag flag-saleoff">享9折</span>
-      <a href="#" class="img-wrap">
-        <img src="../assets/img/xmad-gd-01.png" />
-      </a>
-      <h3 class="good-title"><a href="">小米手环</a></h3>
-      <p class="good-desc">OLED 显示屏幕，升级计步算法</p>
-      <p class="good-price">588</p>
-    </li><li class="goods-list-item">
-      <a href="#" class="img-wrap">
-        <img src="../assets/img/xmad-gd-01.png" />
-      </a>
-      <h3 class="good-title"><a href="">小米手环</a></h3>
-      <p class="good-desc">OLED 显示屏幕，升级计步算法</p>
-      <p class="good-price">588</p>
-    </li><li class="goods-list-item">
-      <a href="#" class="img-wrap">
-        <img src="../assets/img/xmad-gd-01.png" />
-      </a>
-      <h3 class="good-title"><a href="">小米手环</a></h3>
-      <p class="good-desc">OLED 显示屏幕，升级计步算法</p>
-      <p class="good-price">588</p>
-    </li><li class="goods-list-item">
-      <a href="#" class="img-wrap">
-        <img src="../assets/img/xmad-gd-01.png" />
-      </a>
-      <h3 class="good-title"><a href="">小米手环</a></h3>
-      <p class="good-desc">OLED 显示屏幕，升级计步算法</p>
-      <p class="good-price">588</p>
-    </li><li class="goods-list-item">
-      <a href="#" class="img-wrap">
-        <img src="../assets/img/xmad-gd-01.png" />
-      </a>
-      <h3 class="good-title"><a href="">小米手环</a></h3>
-      <p class="good-desc">OLED 显示屏幕，升级计步算法</p>
-      <p class="good-price">588</p>
-    </li>
+      </li>
     </ul>
   </div>
+  </div>
+
 </template>
 <style>
 
 </style>
 <script>
+  export default{
+      data(){
+        return{
+            arrList:[]
+        }
+      },
+      mounted(){
+          this.fetchData();
+      },
+      methods:{
+          fetchData(){
+            var _this = this;
+            this.$http.get('src/data/goodlist.json').then(function(res){
+              console.log(res);
+              console.log("111");
+            }).catch(function(err){console.log(error.response.data);
+              console.log(error.response.status);
+              console.log(error.response.headers);
+              console.log("goodSection",err);
+            });
+          }
+      }
+  }
 </script>

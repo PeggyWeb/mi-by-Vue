@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <loading v-show="loading"></loading>
+    <!--<loading v-show="loading"></loading>-->
     <top-bar v-show="headerShow"></top-bar>
     <router-view></router-view>
     <footer_view></footer_view>

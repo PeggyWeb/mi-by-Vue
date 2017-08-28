@@ -9,15 +9,12 @@ Vue.use(Router);
 Vue.use(Loading);
 
 
-const router = new Router({
+
+export default new Router({
   mode:'history',
   scrollBehavior:() => ({
     y:0
-  })
-
-});
-
-export default new Router({
+  }),
   routes: [
     {
       path:'/Home',
