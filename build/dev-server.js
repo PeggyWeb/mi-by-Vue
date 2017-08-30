@@ -65,6 +65,8 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
+app.use('/data',express.static('./data'))/*特别注意，这个不加拿不到json*/
+
 var uri = 'http://localhost:' + port
 
 var _resolve

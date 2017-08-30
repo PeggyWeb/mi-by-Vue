@@ -13,7 +13,7 @@
     </div>
     <a href="" class="img-wrap fl"><img src="../assets/img/cleanFloor.jpg" /></a>
     <ul class="goods-list">
-      <li class="goods-list-item">
+      <!--<li class="goods-list-item">
         <span class="flag flag-new">新品</span>
         <a href="#" class="img-wrap">
           <img src="../assets/img/xmad-gd-01.png" />
@@ -25,6 +25,21 @@
           <a href="">
             <span class="review">听说小米客服美眉很厉害送我一首藏头诗可好我爱钱天玉</span>
             <span class="author">来自橙子的</span>
+          </a>
+        </p>
+      </li>-->
+      <li v-for="(item,index) in arrList" class="goods-list-item">
+        <span class="flag flag-new">{{item.flag}}</span>
+        <a href="#" class="img-wrap">
+          <img :src="item.img" /><!--或者v-bind:src="item.img"-->
+        </a>
+        <h3 class="good-title"><a href="">{{item.gname}}</a></h3>
+        <p class="good-desc">{{item.goods_des}}</p>
+        <p class="good-price">{{item.price}}</p>
+        <p class="review-wrap" v-if="item.review"><!--如果review存在就显示-->
+          <a href="">
+            <span class="review">{{item.review}}</span>
+            <span class="author">{{item.review_author}}</span>
           </a>
         </p>
       </li>
@@ -49,12 +64,12 @@
       methods:{
           fetchData(){
             var _this = this;
-            this.$http.get('src/data/goodlist.json').then(function(res){
-              console.log(res);
-              console.log("111");
-            }).catch(function(err){console.log(error.response.data);
-              console.log(error.response.status);
-              console.log(error.response.headers);
+            this.$http.get('./data/goodlist.json').then(function(res){
+                console.log(res.data)
+             _this.arrList=res.data;
+            }).catch(function(err){
+               /* console.log(err.response.data);*/
+
               console.log("goodSection",err);
             });
           }
