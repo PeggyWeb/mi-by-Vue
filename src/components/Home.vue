@@ -4,8 +4,12 @@
       <top-header></top-header>
 
     </div>
-    <good-section></good-section>
-    <hot-product></hot-product>
+    <div class="home-main">
+      <div class="container">
+        <good-section></good-section>
+        <hot-product></hot-product>
+      </div>
+    </div>
     <img src="../assets/img/logo.png">
   </div>
 </template>

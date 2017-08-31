@@ -1,7 +1,5 @@
 <template>
-  <div class="home-main">
-    <div class="container">
-
+  <div class="home-smart">
     <div class="section-header">
       <h2 class="section-title">智能</h2>
       <ul class="section-nav">
@@ -29,7 +27,7 @@
         </p>
       </li>-->
       <li v-for="(item,index) in arrList" class="goods-list-item">
-        <span class="flag flag-new">{{item.flag}}</span>
+        <span class="flag flag-new" v-if="item.flag">{{item.flag}}</span>
         <a href="#" class="img-wrap">
           <img :src="item.img" /><!--或者v-bind:src="item.img"-->
         </a>
@@ -45,8 +43,6 @@
       </li>
     </ul>
   </div>
-  </div>
-
 </template>
 <style>
 
@@ -65,10 +61,9 @@
           fetchData(){
             var _this = this;
             this.$http.get('./data/goodlist.json').then(function(res){
-                console.log(res.data)
+
              _this.arrList=res.data;
             }).catch(function(err){
-               /* console.log(err.response.data);*/
 
               console.log("goodSection",err);
             });

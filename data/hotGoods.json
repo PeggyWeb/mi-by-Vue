@@ -1,0 +1,99 @@
+{
+  "stageList":[
+    {
+      "stage": "图书",
+      "goodsList": [
+        {
+          "gname": "哈利波特与被诅咒的孩子",
+          "gdesc": "“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！",
+          "price": "29.37",
+          "img": "localhost:8082/static/img/sgood01.png"
+        },
+        {
+          "gname": "好吗好的",
+          "gdesc": "“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！",
+          "price": "17.99",
+          "img": "http://i1.mifile.cn/a4/61e1385e-54de-48f3-8717-5e4f4b1cdd14"
+        },
+        {
+          "gname": "图书",
+          "gdesc": "“海量好书，享受精品阅读时光",
+          "price": "17.99",
+          "img": "http://i1.mifile.cn/a4/61e1385e-54de-48f3-8717-5e4f4b1cdd14"
+        }
+      ]
+    },{"stage": "主题",
+      "goodsList": [
+        {
+          "gname": "哈利波特与被诅咒的孩子",
+          "gdesc": "“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！",
+          "price": "29.37",
+          "img": "localhost:8082/static/img/sgood01.png"
+        },
+        {
+          "gname": "好吗好的",
+          "gdesc": "“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！",
+          "price": "17.99",
+          "img": "http://i1.mifile.cn/a4/61e1385e-54de-48f3-8717-5e4f4b1cdd14"
+        },
+        {
+          "gname": "图书",
+          "gdesc": "“海量好书，享受精品阅读时光",
+          "price": "17.99",
+          "img": "http://i1.mifile.cn/a4/61e1385e-54de-48f3-8717-5e4f4b1cdd14"
+        }
+      ]
+    },
+    {"stage": "游戏",
+      "goodsList": [
+        {
+          "gname": "哈利波特与被诅咒的孩子",
+          "gdesc": "“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！",
+          "price": "29.37",
+          "img": "localhost:8082/static/img/sgood01.png"
+        },
+        {
+          "gname": "好吗好的",
+          "gdesc": "“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！",
+          "price": "17.99",
+          "img": "http://i1.mifile.cn/a4/61e1385e-54de-48f3-8717-5e4f4b1cdd14"
+        },
+        {
+          "gname": "图书",
+          "gdesc": "“海量好书，享受精品阅读时光",
+          "price": "17.99",
+          "img": "http://i1.mifile.cn/a4/61e1385e-54de-48f3-8717-5e4f4b1cdd14"
+        }
+      ]
+    },
+    {"stage": "应用",
+      "goodsList": [
+        {
+          "gname": "哈利波特与被诅咒的孩子",
+          "gdesc": "“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！",
+          "price": "29.37",
+          "img": "localhost:8082/static/img/sgood01.png"
+        },
+        {
+          "gname": "好吗好的",
+          "gdesc": "“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！",
+          "price": "17.99",
+          "img": "http://i1.mifile.cn/a4/61e1385e-54de-48f3-8717-5e4f4b1cdd14"
+        },
+        {
+          "gname": "图书",
+          "gdesc": "“海量好书，享受精品阅读时光",
+          "price": "17.99",
+          "img": "http://i1.mifile.cn/a4/61e1385e-54de-48f3-8717-5e4f4b1cdd14"
+        }
+      ]
+    }
+  ]
+}
+
+
+
+
+
+
+
