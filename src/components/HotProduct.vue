@@ -2,10 +2,10 @@
   <div class="home-stage">
     <h2 class="section-title">内容</h2>    
     <ul class="stage-list" >      
-      <li class="stage-item" v-for="item in hotList.stageList">
+      <li class="stage-item" v-for="item in hotList.stageList" >
         <h3 class="stage-name">{{item.stage}}</h3>
-        <transition name="fade" class="item-list" tag="ul">
-          <li v-for="good in item.goodsList">
+        <ul class="item-list" :style="{marginLeft: currPage*(-296) + 'px'  }">
+          <li v-for="(good,index) in item.goodsList">
             <h4 class="name">{{good.gname}}</h4>
             <p class="desc">{{good.gdesc}}</p>
             <p class="price">{{good.price }}</p>
@@ -29,18 +29,19 @@
               <img src="../assets/img/sgood01.png">
             </a>
           </li>-->
-        </transition>
+        </ul>
         <ul class="page-control">
-          <li class="active"></li><li></li><li></li>
+          <li v-for="(item,index) in item.goodsList.length" :class="{'active':currPage===index}"></li>
         </ul>
         <div class="page-button">
-          <a href="javascript:void(0);" class="iconfont btn-previous" @click='previous'>&#xe600;</a>
-          <a href="javascript:void(0);" class="iconfont btn-next" @click='next'>&#xe602;</a>
+          <span class="iconfont btn-previous" @click="chanegeslide(item,-1,$event)">&#xe600;</span>
+          <span class="iconfont btn-next" @click="chanegeslide(item,1,$event)">&#xe602;</span>
         </div>
       </li>      
       <!--<li class="stage-item">
         <h3 class="stage-name">图书</h3>
         <ul class="item-list">
+          
           <li>
             <h4 class="name">哈利波特与被诅咒的孩子</h4>
             <p class="desc">“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！</p>
@@ -49,22 +50,7 @@
               <img src="../assets/img/sgood01.png">
             </a>
           </li>
-          <li>
-            <h4 class="name">哈利波特与被诅咒的孩子</h4>
-            <p class="desc">“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！</p>
-            <p class="price">29.37</p>
-            <a href="" class="img-wrap">
-              <img src="../assets/img/sgood01.png">
-            </a>
-          </li>
-          <li>
-            <h4 class="name">哈利波特与被诅咒的孩子</h4>
-            <p class="desc">“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！</p>
-            <p class="price">29.37</p>
-            <a href="" class="img-wrap">
-              <img src="../assets/img/sgood01.png">
-            </a>
-          </li>
+          
         </ul>
         <ul class="page-control">
           <li class="active"></li><li></li><li></li>
@@ -88,8 +74,8 @@
   export default{
       data(){
           return{
-              hotList:[],
-              slide:0
+              currPage:0,
+              hotList:[]              
           }
       },
     filters:{
@@ -108,16 +94,24 @@
                 console.log("sorry,losing way" +err);
           })
         },
-        previous:function(event){
-          if(event){
-            console.log(event.target.tagName)
-          }
-          
+        slideindex:function(){
+          this.$set()
         },
-        next:function(event){
-          if(event){
-            console.log(event.target.tagName)
-          }
+        chanegeslide:function(good,distange,event){
+          if(typeof good.currPage == 'undefined')
+          if(distange>0){
+            if(this.currPage<Math.floor(this.hotList.stageList.length)){
+              this.currPage++;
+              if(this.currPage>=3)this.currPage=0
+            } 
+          }else if(distange<0){
+            if(this.currPage>0&&this.currPage!==0){
+              this.currPage--;
+            }                         
+          }else{return}
+              console.log(this.currPage);    
+          if(event)
+            event.preventDefault()
         }
     }
   }
