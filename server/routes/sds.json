@@ -1,0 +1,50 @@
+/**
+ * Created by tl on 2018/3/2.
+ */
+
+{
+  "id":12112132,
+  "name":"jason",
+  "cartList": [
+    {
+      "productImage": "mi6.jpg",
+      "salePrice": "2499",
+      "productName": "小米6",
+      "productId": "201710006",
+      "productNum": "7",
+      "checked": "0"
+    },
+    {
+      "productImage": "9.jpg",
+      "salePrice": "999",
+      "productName": "IH 电饭煲",
+      "productId": "201710009",
+      "productNum": "1",
+      "checked": "0"
+    },
+    {
+      "productImage": "note.jpg",
+      "salePrice": "3549",
+      "productName": "小米笔记本",
+      "productId": "201710005",
+      "productNum": "1",
+      "checked": "0"
+    },
+    {
+      "productImage": "6.jpg",
+      "salePrice": "59",
+      "productName": "智能插线板",
+      "productId": "201710002",
+      "productNum": "2",
+      "checked": "0"
+    },
+    {
+      "productId": "201710018",
+      "productName": "智能摄像机",
+      "salePrice": "389",
+      "productImage": "photo.jpg",
+      "productNum": "2",
+      "checked": "0"
+    }
+  ]
+}

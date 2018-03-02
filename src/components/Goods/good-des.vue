@@ -5,7 +5,8 @@
   </div>
 </template>
 <style>
- @import '../../assets/css/main.css';
+ @import '../../../static/css/main.css';
+
 </style>
 <script>
 </script>

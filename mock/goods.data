@@ -1,0 +1,54 @@
+[{
+  "gname":"小米MIX",
+  "price":"3499",
+  "flag":"新品",
+  "img":"./assets/img/3C.png",
+  "goods_des":"OLED 显示屏幕，升级计步算法",
+  "review":"听说小米客服美眉很厉害送我一首藏头诗可好我爱钱天玉",
+  "review_author":"来自橙子的"
+},{
+  "gname":"小米MIX2",
+  "price":"3499",
+  "img":"../../staticimg/xmad-gd-01.png",
+  "goods_des":"6.4全面屏，全陶瓷机身",
+  "review":"听说小米客服美眉很厉害送我一首藏头诗可好我爱钱天玉"
+},{
+  "gname":"小米MIX3",
+  "price":"3499",
+  "img":"./assets/img/3C.png",
+  "goods_des":"OLED 显示屏幕，升级计步算法",
+  "review":"听说小米客服美眉很厉害送我一首藏头诗可好我爱钱天玉",
+  "review_author":"来自橙子的"
+},{
+  "gname":"小米MIX4",
+  "price":"3499",
+  "img":"../../staticimg/xmad-gd-01.png",
+  "goods_des":"6.4 全面屏，全陶瓷机身"
+}
+,{
+  "gname":"小米MIX4",
+  "price":"3499",
+  "img":"../../staticimg/xmad-gd-01.png",
+  "goods_des":"6.4 全面屏，全陶瓷机身"
+}
+,{
+  "gname":"小米MIX4",
+  "price":"3499",
+  "img":"../../staticimg/xmad-gd-01.png",
+  "goods_des":"6.4 全面屏，全陶瓷机身",
+  "review":"听说小米客服美眉很厉害送我一首藏头诗可好我爱钱天玉",
+  "review_author":"来自橙子的"
+}
+,{
+  "gname":"小米MIX4",
+  "price":"3499",
+  "img":"../../staticimg/xmad-gd-01.png",
+  "goods_des":"6.4 全面屏，全陶瓷机身"
+}
+,{
+  "gname":"小米MIX4",
+  "price":"3499",
+  "img":"../../staticimg/xmad-gd-01.png",
+  "goods_des":"6.4 全面屏，全陶瓷机身"
+}
+]

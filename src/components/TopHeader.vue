@@ -25,7 +25,7 @@
           <li>
             <div class="figure">
               <a href="#">
-                <img src="../assets/img/3C.png" />
+                <img src="../../static/img/3C.png" />
               </a>
             </div>
             <div class="title">
@@ -36,7 +36,7 @@
           <p class="flags"><span class="flag">现货</span></p>
           <div class="figure">
             <a href="#">
-              <img src="../assets/img/3C.png" />
+              <img src="../../static/img/3C.png" />
             </a>
           </div>
           <div class="title">
@@ -46,7 +46,7 @@
         </li><li>
           <div class="figure">
             <a href="#">
-              <img src="../assets/img/3C.png" />
+              <img src="../../static/img/3C.png" />
             </a>
           </div>
           <div class="title">

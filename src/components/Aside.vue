@@ -12,19 +12,19 @@
           </li>
           <li class="star-goods">
             <a class="link">
-              <img src="../assets/img/mitu-80.jpg"/>
+              <img src="../../static/img/mitu-80.jpg"/>
               <span class="text">小米</span>
             </a>
           </li>
           <li class="star-goods">
             <a class="link">
-              <img src="../assets/img/mitu-80.jpg"/>
+              <img src="../../static/img/mitu-80.jpg"/>
               <span class="text">小米</span>
             </a>
           </li>
           <li class="star-goods">
             <a class="link">
-              <img src="../assets/img/mitu-80.jpg"/>
+              <img src="../../static/img/mitu-80.jpg"/>
               <span class="text">小米</span>
             </a>
           </li>

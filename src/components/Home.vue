@@ -10,7 +10,7 @@
         <hot-product></hot-product>
       </div>
     </div>
-    <img src="../assets/img/logo.png">
+    <img src="../../static//img/logo.png">
   </div>
 </template>
 <style>

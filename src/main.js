@@ -6,8 +6,13 @@ import axios from 'axios'
 import router from './router'
 import store from './store/'
 import Loading from './components/Loading'
+import VueLazyLoad from 'vue-lazyload'
 
 Vue.use(Loading);
+//图片懒加载
+Vue.use(VueLazyLoad,{
+  loading:"/static/img/loading.gif"
+});
 axios.interceptors.request.use(function (config) {
   store.dispatch('showLoading');
   return config;
@@ -24,6 +29,10 @@ axios.interceptors.response.use(function(response){
 Vue.prototype.$http = axios;
 
 require('./assets/css/main.css')
+require('./assets/css/base.css')
+require('./assets/css/product.css')
+require('./assets/css/login.css')
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

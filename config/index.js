@@ -27,7 +27,18 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/goods':{  // 当我们访问'/goods'的时候，会转发到express的localhost:3000下面，访问3000下面的'/goods';
+        target:'http://localhost:3000'
+      },
+      '/goods/*':{
+        target:'http://localhost:3000'
+      },
+      //两个星users下的二级和三级路由
+      '/users/**':{
+        target:'http://localhost:3000'
+      }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

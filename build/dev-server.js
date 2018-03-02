@@ -20,9 +20,13 @@ var port = process.env.PORT || config.dev.port
 var autoOpenBrowser = !!config.dev.autoOpenBrowser
 // Define HTTP proxies to your custom API backend
 // https://github.com/chimurai/http-proxy-middleware
+//设置代理的，这里的端口不一样，所以要进行设置
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+var router = express.Router();
+
+app.use(router);
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
@@ -65,7 +69,7 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-app.use('/data',express.static('./data'))/*特别注意，这个不加拿不到json*/
+/*app.use('/data',express.static('./data'))特别注意，这个不加拿不到json*/
 
 var uri = 'http://localhost:' + port
 
@@ -92,3 +96,4 @@ module.exports = {
     server.close()
   }
 }
+

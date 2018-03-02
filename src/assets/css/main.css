@@ -5,11 +5,12 @@ input,select{margin:0;}
 a{text-decoration:none;color:inherit;}
 p{margin:0;}
 @font-face {
-    font-family: 'iconfont';  /* project id 374170 */
-    src: url('http://at.alicdn.com/t/font_374170_5a6eto9rf7a7zaor.eot');
-    src: url('http://at.alicdn.com/t/font_374170_5a6eto9rf7a7zaor.eot?#iefix') format('embedded-opentype'),
-    url('http://at.alicdn.com/t/font_374170_5a6eto9rf7a7zaor.woff') format('woff'),
-    url('http://at.alicdn.com/t/font_374170_5a6eto9rf7a7zaor.ttf') format('truetype')
+  font-family: 'iconfont';  /* project id 374170 */
+  src: url('//at.alicdn.com/t/font_374170_7r5ofhginitl0udi.eot');
+  src: url('//at.alicdn.com/t/font_374170_7r5ofhginitl0udi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_374170_7r5ofhginitl0udi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_374170_7r5ofhginitl0udi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_374170_7r5ofhginitl0udi.svg#iconfont') format('svg');
 }
 .iconfont{
     font-family:"iconfont" !important;
@@ -24,7 +25,7 @@ p{margin:0;}
 .iconfont{margin:0 2px;font-size:inherit}
 .corange{color:#ff6700}
 header {height:40px;line-height:40px;font-size:12px;background-color:#333;color:#b0b0b0;}
-.container{width:1226px;margin:0 auto;}
+.container{max-width:1226px;margin:0 auto;}
 .topbar-nav {max-width:800px;display:inline-block}
 .topbar-nav a{border-right:1px solid #666;padding:0 6px;}
 .topbar-nav a:last-of-type{border-left:0;}
@@ -35,7 +36,7 @@ header {height:40px;line-height:40px;font-size:12px;background-color:#333;color:
 .message{padding:0 5px}
 .site-header {position:relative}
 .header-logo {display:inline-block;margin-top:22px;vertical-align:top;}
-.logo{display:inline-block;width:55px;height:55px; background: url(../img/mi-logo.png) no-repeat center;background-color:#ff6700;}
+.logo{display:inline-block;width:55px;height:55px; background: url(../../../static/img/logo.png) no-repeat center;background-color:#ff6700;}
 .header-nav { display:inline-block;vertical-align:text-top; }
 .nav-list {font-size:16px;vertical-align:top;line-height: 100px;}
 .nav-item {display:inline-block;}
@@ -150,9 +151,9 @@ header {height:40px;line-height:40px;font-size:12px;background-color:#333;color:
 .video-item .img-wrap:hover .btn-play{background-color:#ff6700;border-color:#ff6700;}
 .video-item .img-wrap>img{width:296px;ehgiht:180px;}
 .btn-play{position:absolute;left:20px;bottom:15px;padding:2px 9px;border:2px solid #fff;border-radius:15px;color:#fff;background-color:rgba(0,0,0,.3)}
-.footer{clear:both}
+.footer{clear:both;background-color: #fff;}
 .server-list{font-size:0;padding:27px 0;border-bottom:1px solid #bbb;text-align:center;}
-.server-item{display: inline-block;width:19.8%;border-right:1px solid #bbb;font-size:16px;color:#333;}
+.server-item{display: inline-block;width:19.8%;border-right:1px solid #bbb;font-size:18px;color:#555;}
 .server-item:last-child{border-right:0;}
 .server-item:hover{color:#ff6700;}
 .footer-links{padding:40px 0;color:#555;}
