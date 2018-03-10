@@ -84,6 +84,7 @@
         this.checkLogin();
     },
     methods: {
+      //检查登录
       checkLogin(){
         axios.get("/users/checkLogin").then((response) => {
           let res = response.data;
@@ -92,6 +93,7 @@
           }
         })
       },
+      //登录
       login(){
         if (!this.userName && !this.userPwd) {
           this.errorTip = true;
@@ -107,6 +109,7 @@
               this.errorTip = false;
               this.loginModalFlag = false;
               this.nickName = res.result.userName;
+              window.location.reload();
             } else {
               this.errorTip = true;
             }
@@ -120,6 +123,7 @@
           let res = response.data;
           if (res.status == "0") {
             this.nickName = "";
+            window.location.reload();
           }
         })
       }

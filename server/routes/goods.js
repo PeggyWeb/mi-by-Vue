@@ -22,11 +22,11 @@ mongoose.connection.on('disconnected', function () {
 })
 //var goodsData = require('../../mock/goodlist.json');
 router.get("/list", function (req, res, next) {
-  let page = parseInt(req.param("page"));
-  let pageSize = parseInt(req.param("pageSize"));
-  let sort = req.param("sort");
+  let page = parseInt(req.query.page);
+  let pageSize = parseInt(req.query.pageSize);
+  let sort = req.query.sort;
   let skip = (page - 1) * pageSize;
-  let priceLevel = req.param("priceLevel");
+  let priceLevel = req.query.priceLevel;
   let params = {};
   let priceGt = '', priceLte = '';
   if (priceLevel != 'all') {
@@ -67,14 +67,27 @@ router.get("/list", function (req, res, next) {
           msg: err.message
         })
       } else {
-        res.json({
-          status: '0',
-          msg: '',
-          result: {
-            count: doc.length,
-            list: doc
+        Goods.count({},function(err,count){
+          if(err){
+            res.json({
+              status: '0',
+              msg: err.message,
+              result: ''
+            })
+          }else{
+            res.json({
+              status: '0',
+              msg: '',
+              result: {
+                count: doc.length,
+                list: doc,
+                goods_count:count
+              }
+            })
           }
-        })
+
+        });
+
       }
     }
   )

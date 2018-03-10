@@ -59,23 +59,28 @@
     </div>
     <div class="header-search fr">
       <form class="search-from">
-        <input class="search-text" id="search" name="keyword"  /><input class="search-btn iconfont icon-search" value="&#xe6ac;"/>
+        <input class="search-text" id="search" name="keyword"  /><a class="search-btn iconfont icon-search">&#xe6ac;</a>
       </form>
     </div>
-    <header-aside></header-aside>
+    <div class="home-slide">
+      <header-aside></header-aside>
+      <slider></slider>
+    </div>
     <header-server></header-server>
   </div>
 </template>
 <style>
-
+  .home-slide{position:relative}
 </style>
 <script>
 import Aside from './Aside.vue'
 import hServer from './hServer.vue'
+import slider from './Carousel/Carousel'
   export default{
     components:{
-        'header-aside':Aside,
-        'header-server':hServer
+      'header-aside':Aside,
+      'header-server':hServer,
+      slider
     }
   }
 </script>

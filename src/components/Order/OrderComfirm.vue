@@ -30,7 +30,8 @@
               </ul>
             </div>
             <ul class="cart-item-list">
-              <li v-for="item in cartList" v-if="item.checked=='1'">
+              <!--没有做接口的时候这样筛选v-if="item.checked=='1'"-->
+              <li v-for="item in cartList" >
                 <div class="cart-tab-1">
                   <div class="cart-item-pic">
                     <img :src="'static/product/'+item.productImage" alt="">
@@ -124,7 +125,7 @@
     },
     methods:{
       init(){
-        axios.get("/users/cart").then((response)=>{
+        axios.get("/users/cartCheck").then((response)=>{
           let res = response.data;
           this.cartList = res.result;
           this.cartList.forEach((item)=>{

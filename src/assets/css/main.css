@@ -6,11 +6,11 @@ a{text-decoration:none;color:inherit;}
 p{margin:0;}
 @font-face {
   font-family: 'iconfont';  /* project id 374170 */
-  src: url('//at.alicdn.com/t/font_374170_7r5ofhginitl0udi.eot');
-  src: url('//at.alicdn.com/t/font_374170_7r5ofhginitl0udi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_374170_7r5ofhginitl0udi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_374170_7r5ofhginitl0udi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_374170_7r5ofhginitl0udi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_374170_0286ilzgmwhtzkt9.eot');
+  src: url('//at.alicdn.com/t/font_374170_0286ilzgmwhtzkt9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_374170_0286ilzgmwhtzkt9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_374170_0286ilzgmwhtzkt9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_374170_0286ilzgmwhtzkt9.svg#iconfont') format('svg');
 }
 .iconfont{
     font-family:"iconfont" !important;
@@ -25,7 +25,7 @@ p{margin:0;}
 .iconfont{margin:0 2px;font-size:inherit}
 .corange{color:#ff6700}
 header {height:40px;line-height:40px;font-size:12px;background-color:#333;color:#b0b0b0;}
-.container{max-width:1226px;margin:0 auto;}
+.container{max-width:1226px;margin:0 auto;overflow: hidden}
 .topbar-nav {max-width:800px;display:inline-block}
 .topbar-nav a{border-right:1px solid #666;padding:0 6px;}
 .topbar-nav a:last-of-type{border-left:0;}
@@ -45,7 +45,8 @@ header {height:40px;line-height:40px;font-size:12px;background-color:#333;color:
 .header-search { display: inline-block;margin-top:20px; }
 .search-from {}
 .search-text { width:245px;height: 50px;padding-right:10px;border:1px solid #ccc;vertical-align:top;}
-.search-btn { width:52px;height: 50px;margin:0;border:1px solid #ccc;text-align:center;border-left:0;vertical-align:top; }
+.search-btn { display:inline-block;width:52px;height: 50px;margin:0;border:1px solid #ccc;border-left:0;line-height:50px;font-size:18px;font-weight:bold;text-align:center;vertical-align:top; }
+.search-btn:hover{background-color:#ff6700;color:#fff;}
 .header-nav-menu {position:absolute;top:100px;display:none;border-top:1px solid #ccc;box-shadow:0 3px 4px #bbb;z-index:4;background-color:#fff;}
 .header-nav-menu .children-list {font-size:12px;}
 .header-nav-menu .children-list li {position:relative;display: inline-block;width:204px;padding:40px 0;vertical-align:top;text-align:center;}
@@ -59,8 +60,8 @@ header {height:40px;line-height:40px;font-size:12px;background-color:#333;color:
 .category{position:relative;width:234px;height:460px;padding:20px 0;font-size:14px;background-color:rgba(0,0,0,.6);z-index:3;}
 .category-item {}
 .category-item>a {position:relative;display:block;height:42px;line-height:42px;padding-left:30px;color:#fff;}
-.category-item>a:hover{background-color:#ff6700;}
-.category-item>a:hover +.children{display: block;}
+.category-item:hover{background-color:#ff6700;}
+.category-item:hover .children{display: block;}
 .category-item>a>span { position:absolute;right:20px;font-size:16px;color:#ccc;}
 .category-item .children {display:none;position:absolute;left:234px;top:0;z-index:4;height:460px;border:1px solid #aaa;box-shadow:0 8px 20px rgba(0,0,0,0.18);background-color:#fff;color:#888;}
 .category-item .children-list {width:256px;}

@@ -56,19 +56,21 @@
         if(!orderId){
             return;
         }
-        console.log(orderId)
         axios.get("/users/orderDetail",{
             params:{orderId:orderId}
         }).then((response)=>{
             let res = response.data;
             if(res.status == '0'){
+                console.log(res)
                 this.orderId =res.result.orderId;
                 this.orderTotal = res.result.orderTotal;
             }
-        })
+        });
+       // this.findCity();
     },
     methods:{
 
     }
   }
 </script>
+

@@ -34,7 +34,7 @@
   </ul>
 </template>
 <style>
-
+  .category{position:absolute;left:0;top:0;z-index:3}
 </style>
 <script>
 

@@ -150,7 +150,7 @@ router.post("/cartEdit", function (req, res, next) {
 //选中购物车中所有商品
 router.post("/editCheckAll", function (req, res, next) {
   var userId = req.cookies.userId,
-    checkAll = req.body.checkAll?'1':'0';
+    checkAll = req.body.checkAll ? '1' : '0';
   User.findOne({userId: userId}, function (err, user) {
     if (err) {
       res.json({
@@ -182,13 +182,39 @@ router.post("/editCheckAll", function (req, res, next) {
     }
   })
 });
-//查询购物车中选中的商品(待完成)
-router.get("/cartCheck",function(req,res,next){
+//查询购物车中选中的商品
+router.get("/cartCheck", function (req, res, next) {
   var userId = req.cookies.userId;
-  User.find({
-    userId:userId,
-    "cartList.checked":"1"
-  },{"cartList":1,"_id":0},function(err,doc){
+  User.findOne({
+    userId: userId
+  }, function (err, doc) {
+    if (err) {
+      res.json({
+        status: '1',
+        msg: err.message,
+        result: ''
+      })
+    } else {
+      let cartList = doc.cartList;
+      let _cartList = [];
+      cartList.forEach((item) => {
+        if (item.checked == '1') {
+          _cartList.push(item);
+        }
+      })
+
+      res.json({
+        status: '0',
+        msg: '',
+        result: _cartList
+      })
+    }
+  })
+})
+//查询用户地址
+router.get("/addressList", function (req, res, next) {
+  var userId = req.cookies.userId;
+  User.findOne({userId: userId}, function (err, doc) {
     if (err) {
       res.json({
         status: '1',
@@ -199,69 +225,50 @@ router.get("/cartCheck",function(req,res,next){
       res.json({
         status: '0',
         msg: '',
-        result: doc
-      })
-    }
-  })
-})
-//查询用户地址
-router.get("/addressList",function(req,res,next){
-  var userId = req.cookies.userId;
-  User.findOne({userId:userId},function(err,doc){
-    if (err) {
-      res.json({
-        status: '1',
-        msg: err.message,
-        result: ''
-      })
-    }else{
-      res.json({
-        status: '0',
-        msg:'',
         result: doc.addressList
       })
     }
   })
 });
 //设置默认地址
-router.post("/setDafault",function(req,res,next){
+router.post("/setDafault", function (req, res, next) {
   var userId = req.cookies.userId,
-      addressId = req.body.addressId;
-  if(!addressId){
+    addressId = req.body.addressId;
+  if (!addressId) {
     res.json({
-      status:'1003',
-      msg:'address is Null',
-      result:''
+      status: '1003',
+      msg: 'address is Null',
+      result: ''
     })
   }
-  User.findOne({userId:userId},function(err,doc){
-    if(err){
+  User.findOne({userId: userId}, function (err, doc) {
+    if (err) {
       res.json({
-        status:'1',
-        msg:err.message,
-        result:''
+        status: '1',
+        msg: err.message,
+        result: ''
       })
-    }else{
+    } else {
       var addressList = doc.addressList;
-      addressList.forEach((item)=>{
-        if(item.addressId == addressId){
+      addressList.forEach((item) => {
+        if (item.addressId == addressId) {
           item.isDefault = true;
-        }else{
+        } else {
           item.isDefault = false;
         }
       });
-      doc.save(function (err1,doc1) {
-        if(err1){
+      doc.save(function (err1, doc1) {
+        if (err1) {
           res.json({
-            status:'1',
-            msg:err1.message,
-            result:''
+            status: '1',
+            msg: err1.message,
+            result: ''
           })
-        }else{
+        } else {
           res.json({
-            status:'0',
-            msg:'',
-            result:''
+            status: '0',
+            msg: '',
+            result: ''
           })
         }
       })
@@ -269,147 +276,164 @@ router.post("/setDafault",function(req,res,next){
   })
 });
 //删除地址
-router.post("/delAddress",function(req,res,next){
+router.post("/delAddress", function (req, res, next) {
   var userId = req.cookies.userId,
-      addressId = req.body.addressId;
+    addressId = req.body.addressId;
   User.update({
-    userId:userId
-  },{
-    $pull:{
-      'addressList':{
-        'addressId':addressId
+    userId: userId
+  }, {
+    $pull: {
+      'addressList': {
+        'addressId': addressId
       }
     }
-  },function(err,doc){
-    if(err){
+  }, function (err, doc) {
+    if (err) {
       res.json({
-        status:'1',
-        msg:err.message,
-        result:''
+        status: '1',
+        msg: err.message,
+        result: ''
       })
-    }else{
+    } else {
       res.json({
-        status:'0',
-        msg:'',
-        result:''
+        status: '0',
+        msg: '',
+        result: ''
       })
     }
   })
-})
-router.post("/payment",function(req,res,next){
-  var userId=req.cookies.userId,
+});
+//支付
+router.post("/payment", function (req, res, next) {
+  var userId = req.cookies.userId,
     addressId = req.body.addressId,
     orderTotal = req.body.orderTotal;
-  User.findOne({userId:userId},function(err,doc){
-    if(err){
+  User.findOne({userId: userId}, function (err, doc) {
+    if (err) {
       res.json({
-        status:'1',
-        msg:err.message,
-        result:''
+        status: '1',
+        msg: err.message,
+        result: ''
       })
-    }else {
-      var address="",goodsList = [];
+    } else {
+      var address = "", goodsList = [];
       //地址信息
-      doc.addressList.forEach((item)=>{
-        if(addressId == item.addressId){
-          address=item;
+      doc.addressList.forEach((item) => {
+        if (addressId == item.addressId) {
+          address = item;
         }
       });
       //选中的商品列表
-      doc.cartList.filter((item)=>{
-        if(item.checked == "1"){
+      doc.cartList.filter((item) => {
+        if (item.checked == "1") {
           goodsList.push(item)
         }
       });
       var platForm = '622';
-      var r1 = Math.floor(Math.random()*10);
-      var r2 = Math.floor(Math.random()*10);
+      var r1 = Math.floor(Math.random() * 10);
+      var r2 = Math.floor(Math.random() * 10);
       var sysDate = new Date().Format('yyyMMMdddhhmmss')
       var createDate = new Date().Format('yyyy-MM-dd hh:mm:ss')
       var orderId = platForm + r1 + sysDate + r2;
       //保存到订单列表
-      var order={
-        orderId:orderId,
-        orderTotal:orderTotal,
-        addressInfo:address,
-        goodsList:goodsList,
-        orderStatus:'1',
-        createData:createDate
-      }
+      var order = {
+        orderId: orderId,
+        orderTotal: orderTotal,
+        addressInfo: address,
+        goodsList: goodsList,
+        orderStatus: '1',
+        createData: createDate
+      };
       doc.orderList.push(order);
-      doc.save(function(err1,doc1){
-        if(err){
+      doc.save(function (err1, doc1) {
+        if (err) {
           res.json({
-            status:'1',
-            msg:err.message,
-            result:''
-          })
-        }else {
+            status: '1',
+            msg: err.message,
+            result: ''
+          });
+        } else {
+          User.update({
+            userId: userId
+          }, {
+            '$pull': {
+              'cartList': {
+                checked: "1"
+              }
+            }
+          }, function (err3, doc3) {
+            if (err3) {
+              res.json({
+                status: '1',
+                msg: err3.message,
+                result: ''
+              })
+            } else {
+              res.json({
+                status: '0',
+                msg: '',
+                result: {
+                  orderId: order.orderId,
+                  orderTotal: order.orderTotal
+                }
+              });
+            }
+          });
+
+        }
+      });
+
+    }
+  });
+});
+//根据订单详情查询订单信息
+router.get("/orderDetail", function (req, res, next) {
+  var userId = req.cookies.userId;
+  var orderId = req.query.orderId;
+  console.log(orderId)
+  console.log(userId)
+  User.findOne({userId: userId}, function (err, userInfo) {
+    if (err) {
+      res.json({
+        status: '1',
+        msg: err.message,
+        result: ''
+      });
+    } else {
+      var orderList = userInfo.orderList;
+      if (orderList.length > 0) {
+        var orderTotal = 0;
+        orderList.forEach((item) => {
+          if (item.orderId == orderId) {
+            orderTotal = item.orderTotal;
+          }
+        });
+        if (orderTotal > 0) {
           res.json({
             status: '0',
             msg: '',
             result: {
-              orderId:order.orderId,
-              orderTotal:order.orderTotal
-            }
-          })
-        }
-      })
-    }
-  })
-})
-//根据订单详情查询订单信息
-router.get("/orderDetail",function(req,res,next){
-  var userId = req.cookies.userId;
-  var orderId = req.param("orderId");
-  User.findOne({userId:userId},function(err,userInfo){
-    if(err){
-      res.json({
-        status:'1',
-        msg:err.message,
-        result:''
-      });
-    }else{
-
-      var orderList = userInfo.orderList;
-      if(orderList.length>0){
-        var orderTotal = 0;
-        orderList.forEach((item)=>{
-          if(item.orderId == orderId){
-            orderTotal = item.orderTotal;
-          }
-        });console.log(orderTotal)
-        if(orderTotal>0){
-          res.json({
-            status:'0',
-            msg:'',
-            result:{
-              orderId:orderId,
-              orderTotal:orderTotal
+              orderId: orderId,
+              orderTotal: orderTotal
             }
           });
-        }else{
+        } else {
           res.json({
-            status:'20001',
-            msg:'无此订单',
-            result:''
+            status: '20001',
+            msg: '无此订单',
+            result: ''
           });
         }
-      }else{
+      } else {
         res.json({
-          status:'20000',
-          msg:'您还未创建订单',
-          result:''
+          status: '20000',
+          msg: '您还未创建订单',
+          result: ''
         });
       }
     }
   })
 })
-
-
-
-
-
 
 
 module.exports = router;

@@ -44,6 +44,7 @@
                 </li>
               </ul>
             </div>
+            <paginate :page="page" :goods-count="goodsCount" v-on:goPage="changePage"></paginate>
           </div>
         </div>
       </div>
@@ -74,6 +75,7 @@
   import '../../assets/css/product.css'
   import NavBread from '@/components/NavBread'
   import Modal from '@/components/Modal/Modal'
+  import Paginate from '@/components/paginate'
   import axios from 'axios'
   export default{
     data(){
@@ -99,19 +101,20 @@
         sortFlag: true,
         page: 1,
         pageSize: 8,
+        goodsCount:0,
         mdShow: false,
         mdShowCart: false
       }
     },
     components: {
       NavBread,
-      Modal
+      Modal,
+      Paginate
     },
     mounted: function () {
       this.getGoodsList();
     },
     methods: {
-
       getGoodsList(){
         let param = {
           page: this.page,
@@ -123,6 +126,7 @@
           let _res = res.data;
           if (_res.status == '0') {
             this.goodsList = _res.result;
+            this.goodsCount = _res.result.goods_count;
           } else {
             this.goodsList = [];
           }
@@ -164,8 +168,12 @@
       closeModal(){
         this.mdShow = false;
         this.mdShowCart = false;
+      },
+      changePage(pageIndex){
+        this.page = pageIndex;
+        this.getGoodsList();
       }
-    },
+    }
   }
 </script>
 <style type="text/css">
