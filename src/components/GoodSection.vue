@@ -48,6 +48,7 @@
 
 </style>
 <script>
+  import axios from 'axios'
   export default{
       data(){
         return{
@@ -60,7 +61,7 @@
       methods:{
           fetchData(){
             var _this = this;
-            this.$http.get('./data/goodlist.json').then(function(res){
+            axios.get('./data/goodlist.json').then(function(res){
 
              _this.arrList=res.data;
             }).catch(function(err){

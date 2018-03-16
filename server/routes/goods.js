@@ -4,6 +4,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Goods = require('../modules/goods');
 var User = require('../modules/users');
+var Stage = require("../modules/goods_stages");
 //需要用户名和密码的
 //mongoose.connect('mongodb://admin:123456@127.0.0.1:27017/mi');
 mongoose.connect('mongodb://127.0.0.1:27017/dumall');
@@ -159,9 +160,31 @@ router.post("/addCart", function (req, res, next) {
       }
     }
   )
-})
+});
+//增加商品
+router.post("/addGoods",function(req,res,next) {
+  let maxIndex = 1;
+  let good = JSON.parse(req.body.good);
+  Goods.find({}).sort({productId:-1}).then(([first,...others])=>{
+    if(first){
+      good.productId = Math.abs(first.productId) + 1;
+      console.log(good);
+      Goods.create(good,function(err1,doc1){
+        if(err1){
+          res.send("失败")
+        }else{
+          res.send("成功")
+        }
+      })
+    }else{
+      res.send("失败")
+    }
+  })
+});
+//按种类查商品
+router.post("/stage",function(req,res,next){
 
-
+});
 module.exports = router;
 
 

@@ -1,6 +1,3 @@
-/**
- * Created by tl on 2018/1/31.
- */
 var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
