@@ -23,6 +23,9 @@
         <router-link to="/Home" v-if="!nickName">
           注册
         </router-link>
+        <router to="/contact" v-if = "nickName">
+          客服
+        </router>
         <span class="message">
             <a href="#" rel="nofollow">消息中心</a>
           </span>

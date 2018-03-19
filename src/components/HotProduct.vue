@@ -78,43 +78,44 @@
               hotList:[]
           }
       },
-    filters:{
+      filters:{
           formatMoney:value=>{
               return '￥'+value.toFixed(2);
           }
-    },
-    mounted(){
-          this.fetchData();
-    },methods:{
-        fetchData(){
-            this.$http.get('./data/hotGoods.json').then(res=>{
-                this.hotList=res.data
-              // console.log(this.hotList)
-            }).catch(err=>{
-                console.log("sorry,losing way" +err);
-          })
-        },
-        slideindex:function(){
-          this.$set()
-        },
-        chanegeslide:function(good,distange,event){
-          if(typeof good.currPage == 'undefined'){
-            this.$set(good,'currPage')
+      },
+      mounted(){
+        this.fetchData();
+      },
+      methods:{
+          fetchData(){
+              this.$http.get('./data/hotGoods.json').then(res=>{
+                  this.hotList=res.data
+                // console.log(this.hotList)
+              }).catch(err=>{
+                  console.log("sorry,losing way" +err);
+            })
+          },
+          slideindex:function(){
+            this.$set()
+          },
+          chanegeslide:function(good,distange,event){
+            if(typeof good.currPage == 'undefined'){
+              this.$set(good,'currPage')
+            }
+            if(distange>0){
+              if(this.currPage<Math.floor(this.hotList.stageList.length)){
+                this.currPage++;
+                if(this.currPage>=3)this.currPage=0
+              }
+            }else if(distange<0){
+              if(this.currPage>0&&this.currPage!==0){
+                this.currPage--;
+              }
+            }else{return}
+                console.log(this.currPage);
+            if(event)
+              event.preventDefault()
           }
-          if(distange>0){
-            if(this.currPage<Math.floor(this.hotList.stageList.length)){
-              this.currPage++;
-              if(this.currPage>=3)this.currPage=0
-            }
-          }else if(distange<0){
-            if(this.currPage>0&&this.currPage!==0){
-              this.currPage--;
-            }
-          }else{return}
-              console.log(this.currPage);
-          if(event)
-            event.preventDefault()
-        }
-    }
+      }
   }
 </script>

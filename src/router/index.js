@@ -8,6 +8,7 @@ import GoodsList from '@/components/Goods/GoodsList'
 import Address from '@/components/Address/Address'
 import OrderComfirm from '@/components/Order/OrderComfirm'
 import OrderSuccess from '@/components/Order/OrderSuccess'
+import Contact from '@/components/Contact/Contact'
 import AddGood from '@/components/addGood'
 Vue.use(Router);
 Vue.use(Loading);
@@ -59,6 +60,11 @@ export default new Router({
       path:"/addGood",
       name:'addGood',
       component:AddGood
+    },
+    {
+      path:'/contact',
+      name:'contact',
+      component:Contact
     },
     {
       path: '/',

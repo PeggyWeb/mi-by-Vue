@@ -12,7 +12,18 @@ var users = require('./routes/users');
 var goods = require('./routes/goods');
 
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
+//文档https://socket.io/docs/
+
+
+io.on('connetion',function(req,res) {
+  socket.emit('advisory', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
