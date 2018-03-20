@@ -1,38 +1,45 @@
 <template>
-    <div>
-      <input type="text">
-      <button type="button" id="send" @click = send()>发送</button>
+    <div class="advisory">
+      <ul class="chat-record">
+        <li></li>
+      </ul>
+      <input type="text" v-model="question">
+      <button type="button" id="send" @click = "send()">发送</button>
     </div>
 </template>
 
 <style>
+  .advisory{
+    min-height:900px;
+    margin-top:50px;
+    text-align:center
+  }
+  .chat-record{}
+  .chat-record li{background-color:#666;}
 </style>
-<script src="/socket.io/socket.io.js"></script>
 <script>
+import io from 'socket.io-client';
+
     export default {
       data(){
           return{
-
+              question:'',
+              socket:''
           }
       },
       mounted(){
 
       },
+      created(){
+        this.socket = io.connect('http://localhost');
+        this.socket.on('answer',function(data) {
+          console.log(data)
+        })
+      },
       methods:{
-        connent(){
-            var socket = io.connect()
-        },
         send(){
-            socket.emit('advisory','hello');
-          //聊天
-          /*var http = require('http');
-          var io = require('socket.io')(http);
-
-          io.on('connection',function(socket){
-            socket.on("advisory",function(msg){
-              io.emit("hahah",msg)
-            })
-          })*/
+          this.socket.emit('advisory', this.question);
+          this.question=''
         }
       }
     }

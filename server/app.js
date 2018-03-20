@@ -14,14 +14,11 @@ var goods = require('./routes/goods');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-
-//文档https://socket.io/docs/
-
-
-io.on('connetion',function(req,res) {
-  socket.emit('advisory', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+io.listen(80);
+io.on('connection',function(socket) {
+  socket.on('advisory', function (msg) {
+    console.log(msg);
+    socket.emit('answer', msg);
   });
 })
 // view engine setup
@@ -43,7 +40,8 @@ app.use(function(req,res,next){
   }else{
     //商品的过滤可以是下面这个也可以是req.path == '/goods/list'
     if(req.originalUrl == "/users/login" || req.originalUrl == "/users/logout" || req.originalUrl.indexOf('/goods/list')>-1 ){
-      next()
+      next();
+
     }else{
       res.json({
         status:'10001',

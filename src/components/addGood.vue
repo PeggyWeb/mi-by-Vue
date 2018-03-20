@@ -28,11 +28,8 @@
       methods:{
           add(){
              let formData = JSON.stringify(this.good);
-             console.log(formData)
             axios.post('goods/addGoods',{good:formData}).then(function(res){
-                console.log("success");
              }).catch(function(err){
-                 console.log(err)
              });
           }
       }
