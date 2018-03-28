@@ -17,8 +17,8 @@
         </a>
       </div>
     </div>
-    <button type="button" class="slider-btn-prev iconfont" @click="prev">&#xe600;</button>
-    <button type="button" class="slider-btn-next iconfont" @click="next">&#xe602;</button>
+    <button type="button" class="slider-btn-prev iconfont" @click="prev()">&#xe600;</button>
+    <button type="button" class="slider-btn-next iconfont" @click="next()">&#xe602;</button>
     <ul class="slide-nav">
       <li v-for="n in nav_length" class="slide-nav-item" :class="n == (slideIndex+1)?'active':''"></li>
     </ul>
@@ -44,9 +44,11 @@
           slide_x:400,
           slide_maxIndex:1,
           nav_length:0,
-          slide_dom:{}
+          slide_dom:{},
+          slide_inter:{}
         }
       },
+
       mounted(){
         this.initSlider();
       },
@@ -56,8 +58,7 @@
           this.slide_x = this.slide_dom.offsetWidth;
           this.nav_length = Math.abs(this.slide_dom.children.length);
           this.slide_maxIndex = Math.abs(this.slide_dom.children.length) -1;
-          setInterval(()=>{this.slide()},4000);
-
+          this.slide_inter = setInterval(()=>{this.slide()},4000);
         },
         slide(){
           if(this.slideIndex >= this.slide_maxIndex){
@@ -68,17 +69,28 @@
           this.slide_dom.style.transform = "translateX(-"+this.slide_x * this.slideIndex+"px)"
         },
         prev(){
+          console.log(this.slideIndex)
+          clearInterval(this.slide_inter);
           if(this.slideIndex > 0){
             this.slideIndex--;
+            this.slide_inter = setInterval(()=>{this.slide()},4000);
+
           }else{
             this.slideIndex = 0;
+            this.slide_inter = setInterval(()=>{this.slide()},4000);
           }
         },
         next(){
+          console.log(this.slideIndex)
+          clearInterval(this.slide_inter);
+
           if(this.slideIndex >= this.slide_maxIndex){
             this.slideIndex++;
+            this.slide_inter = setInterval(()=>{this.slide()},4000);
+
           }else{
             this.slideIndex=0;
+            this.slide_inter = setInterval(()=>{this.slide()},4000);
           }
         }
       },

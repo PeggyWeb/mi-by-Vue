@@ -15,10 +15,26 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 io.listen(80);
+
+var chatList = {}
 io.on('connection',function(socket) {
-  socket.on('advisory', function (msg) {
-    console.log(msg);
-    socket.emit('answer', msg);
+
+  socket.on('advisory', function (from,to,msg) {
+    if(from in chatList){
+    }else{
+      chatList[from] = socket;
+    }
+    if(to in chatList){
+      console.log(to)
+      console.log(msg)
+      chatList[to].emit('answer', msg,from);
+      chatList[from].emit('answer', msg,from);
+    }else{
+      chatList[from].emit('answer', "对方不在");
+    }
+    for(chatList.length;chatList.length>0;chatList.length --){
+      console.log(chatList[chatList.length])
+    }
   });
 })
 // view engine setup
