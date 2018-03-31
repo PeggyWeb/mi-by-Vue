@@ -13,7 +13,7 @@
         <div class="chat-main">
           <ul class="chat-record" ref="record">
             <li>小米：<span>您好</span></li>
-            <li class="user"><span>这个怎么买</span>：用户</li>
+            <li class="user"><span>这个怎ddsdsd么买</span>：用户</li>
             <li>小米：<span>打折后是980</span></li>
             <li class="user"><span>好的</span>：用户</li>
             <li v-for="con in answer" :class="con.name==to?'':'user'">
@@ -148,27 +148,31 @@ import {getCookie} from "@/util/util";
         this.init();
       },
       updated(){
-        this.init();
+          if(this.socket){
+              this.socket.disconnect();
+          }else{
+            this.init();
+          }
+
       },
       methods:{
         init(){
           this.from = getCookie('userName');
           this.socket = io.connect('http://localhost');
           this.socket.on('answer',(data,belong)=> {
-            console.log(this.answer);
+            console.log(this.socket);
             this.answer.push({
               name:belong,
               message:data
             });
             this.$nextTick(()=>{
-              this.$refs.record.scrollTo(this.$refs.record.scrollHeight);
+              this.$refs.record.scrollTop = this.$refs.record.scrollHeight;
             })
           })
         },
         send(){
           this.socket.emit('advisory', this.from,this.to,this.question);
           this.question=''
-
         }
       }
     }

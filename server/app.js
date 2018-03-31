@@ -12,31 +12,6 @@ var users = require('./routes/users');
 var goods = require('./routes/goods');
 
 var app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-io.listen(80);
-
-var chatList = {}
-io.on('connection',function(socket) {
-
-  socket.on('advisory', function (from,to,msg) {
-    if(from in chatList){
-    }else{
-      chatList[from] = socket;
-    }
-    if(to in chatList){
-      console.log(to)
-      console.log(msg)
-      chatList[to].emit('answer', msg,from);
-      chatList[from].emit('answer', msg,from);
-    }else{
-      chatList[from].emit('answer', "对方不在");
-    }
-    for(chatList.length;chatList.length>0;chatList.length --){
-      console.log(chatList[chatList.length])
-    }
-  });
-})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -90,5 +65,46 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+io.listen(80);
+
+var chatList = {}
+io.on('connection',function(socket) {
+
+  socket.on('advisory', function (from,to,msg) {
+    if(chatList[from] in chatList){
+      console.log(chatList[from])
+    }else{
+      chatList[from] = socket;
+    }
+    if(to in chatList){
+      chatList[to].emit('answer', msg,from);
+      chatList[from].emit('answer', msg,from);
+      console.log(chatList[from])
+      console.log(chatList[to])
+    }else{
+      chatList[from].emit('answer', "对方不在");
+    }
+    // for(chatList.length;chatList.length>0;chatList.length --){
+    //   console.log(chatList[chatList.length])
+    // }
+  });
+  socket.on('disconnect',function(){
+    let cookie_array = JSON.stringify(socket.handshake.headers.cookie).split(";");
+    let cookie_length = cookie_array.length;
+    let user_name;
+    for(cookie_length--;cookie_length>0;cookie_length--){
+      let cookie_item = cookie_array[cookie_length]
+          cookie_item = cookie_item.toString();
+      if(cookie_item.indexOf("userName")){
+        user_name = cookie_array[cookie_length].split("=");
+        user_name = user_name[1];
+        return;
+      }
+    }
+    chatList[user_name]="";
+  });
+})
 
 module.exports = app;
