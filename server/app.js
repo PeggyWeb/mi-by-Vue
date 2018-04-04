@@ -30,7 +30,7 @@ app.use(function(req,res,next){
     next()
   }else{
     //商品的过滤可以是下面这个也可以是req.path == '/goods/list'
-    if(req.originalUrl == "/users/login" || req.originalUrl == "/users/logout" || req.originalUrl.indexOf('/goods/list')>-1 ){
+    if(req.originalUrl == "/users/login" || req.originalUrl == "/users/logout" || req.originalUrl.indexOf('/goods/list')>-1 || req.originalUrl.indexOf('/goods/stage')>-1){
       next();
 
     }else{
@@ -74,21 +74,15 @@ io.on('connection',function(socket) {
 
   socket.on('advisory', function (from,to,msg) {
     if(chatList[from] in chatList){
-      console.log(chatList[from])
     }else{
       chatList[from] = socket;
     }
     if(to in chatList){
       chatList[to].emit('answer', msg,from);
       chatList[from].emit('answer', msg,from);
-      console.log(chatList[from])
-      console.log(chatList[to])
     }else{
       chatList[from].emit('answer', "对方不在");
     }
-    // for(chatList.length;chatList.length>0;chatList.length --){
-    //   console.log(chatList[chatList.length])
-    // }
   });
   socket.on('disconnect',function(){
     let cookie_array = JSON.stringify(socket.handshake.headers.cookie).split(";");

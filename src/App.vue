@@ -26,6 +26,12 @@ export default {
             }
         }
     },
+    created(){
+
+    },
+    methods:{
+
+    },
     components:{
         'top-bar':Top_view,
         'home-index':Home,

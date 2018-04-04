@@ -68,29 +68,28 @@
           }
           this.slide_dom.style.transform = "translateX(-"+this.slide_x * this.slideIndex+"px)"
         },
+        change(){
+          this.slide_dom.style.transform = "translateX(-"+this.slide_x * this.slideIndex+"px)"
+          this.slide_inter = setInterval(()=>{this.slide()},4000);
+        },
         prev(){
-          console.log(this.slideIndex)
           clearInterval(this.slide_inter);
           if(this.slideIndex > 0){
             this.slideIndex--;
-            this.slide_inter = setInterval(()=>{this.slide()},4000);
-
+            this.change();
           }else{
             this.slideIndex = 0;
-            this.slide_inter = setInterval(()=>{this.slide()},4000);
+            this.change();
           }
         },
         next(){
-          console.log(this.slideIndex)
           clearInterval(this.slide_inter);
-
-          if(this.slideIndex >= this.slide_maxIndex){
+          if(this.slideIndex < this.slide_maxIndex){
             this.slideIndex++;
-            this.slide_inter = setInterval(()=>{this.slide()},4000);
-
+            this.change();
           }else{
             this.slideIndex=0;
-            this.slide_inter = setInterval(()=>{this.slide()},4000);
+            this.change();
           }
         }
       },

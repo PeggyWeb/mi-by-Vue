@@ -67,7 +67,7 @@ table{border-collapse: collapse; border-spacing: 0;}
 .text-right{text-align: right;}
 @media only screen and (max-width: 991px){.font-size-12{font-size: 1.2rem;} .font-size-16, .font-size-18{font-size: 1.4rem;} .font-size-20, .font-size-24{font-size: 1.6rem;} .font-size-32{font-size: 1.8rem;} .font-size-36{font-size: 2rem;} .font-size-48{font-size: 2.4rem;} .font-size-48{font-size: 3rem;}}
 html{font-size: 10px;}
-body{font-size: 1.4rem; color: #605F5F; font-family: "akkurat", sans-serif; background: #f5f7fc; -webkit-font-smoothing: antialiased; -moz-font-smoothing: grayscale; -moz-osx-font-smoothing: grayscale;}
+body{font-size: 1.4rem; color: #605F5F; font-family: "akkurat", sans-serif; -webkit-font-smoothing: antialiased; -moz-font-smoothing: grayscale; -moz-osx-font-smoothing: grayscale;}
 .hidden, hide{display: none;}
 /*a{-webkit-transition: color .3s ease-out; transition: color .3s ease-out;}*/
 /*a:hover{color: #d1434a; -webkit-transition: color .3s ease-out; transition: color .3s ease-out;}*/

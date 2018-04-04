@@ -148,12 +148,6 @@ import {getCookie} from "@/util/util";
         this.init();
       },
       updated(){
-          if(this.socket){
-              this.socket.disconnect();
-          }else{
-            this.init();
-          }
-
       },
       methods:{
         init(){

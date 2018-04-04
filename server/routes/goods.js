@@ -56,8 +56,6 @@ router.get("/list", function (req, res, next) {
       }
     }
   }
-
-
   let goodsModel = Goods.find(params).skip(skip).limit(pageSize);
   goodsModel.sort({'salePrice': sort});
 
@@ -182,7 +180,24 @@ router.post("/addGoods",function(req,res,next) {
   })
 });
 //按种类查商品
-router.post("/stage",function(req,res,next){
+router.get("/stage",function(req,res,next){
+  let stageId = JSON.parse(req.body.stageId);
+  console.log(stage)
+  let stage_good = Goods.find({stageId:stageId}).limit(8);
+  stage_good.exec(function (err1,doc1) {
+    if(err1){
+      console.log(err1)
+      res.json({
+        status: '1',
+        msg: err1.message
+      })
+    }else{
+      res.json({
+        status:'0',
+        goods:doc1
+      })
+    }
+  })
 
 });
 module.exports = router;
