@@ -1,3 +1,4 @@
+仿小米商城，架构vue+vue-router+
 # mi
 
 > A Vue.js project
