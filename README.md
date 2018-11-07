@@ -1,7 +1,6 @@
-仿小米商城，架构vue+vue-router+
-# mi
+仿小米商城，前端架构vue+vue-router，后台experss+mongodb
+实现首页、商品列表、地址管理、聊天客服（可以聊天但还不够完善）
 
-> A Vue.js project
 
 ## Build Setup
 
@@ -27,5 +26,3 @@ npm run e2e
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
